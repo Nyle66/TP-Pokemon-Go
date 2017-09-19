@@ -10,6 +10,8 @@ class App{
         this.$titre = $("#form .titre");
         this.$debut = $("#form .debut");
         this.$fin = $("#form .fin");
+
+        this.pos = [];
         
         this.pokedex = [];
         this.markers = [];
@@ -32,10 +34,23 @@ class App{
     initMap(){
 
         this.map = new google.maps.Map(document.getElementById('carte'), {
-            center: {lat: -34.397, lng: 150.644},
-            zoom: 5,
+            center: {lat: 46.922938, lng:2.662475},
+            zoom: 6,
           });
           this.main();
+
+          var carre = new google.maps.Rectangle({
+            strokeColor: '#FF0000',
+            strokeOpacity: 0.8,
+            strokeWeight: 2,
+            fillColor: 'red',
+            fillOpacity: 0,
+            map: this.map,
+            bounds: {
+                west: -7, north:52, east: 9, south: 42.5
+            }
+            });
+    
     }
 
     centerOnGeolocation(){
@@ -49,6 +64,7 @@ class App{
           that.map.setCenter(pos);
         })
     }  
+    
 
     
     // DATE-PICKERS 

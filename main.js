@@ -2,7 +2,7 @@ var app = new App();
 
 app.main = function(){
 
-    app.centerOnGeolocation();
+    //app.centerOnGeolocation();
     app.initPickers();
 
     // alert("Bonjour Red !");
@@ -21,6 +21,9 @@ app.main = function(){
     app.pokeTop = [];
     app.evenement = [];
 
+
+
+    
     
 
     // CREATION DU DRESSEUR
