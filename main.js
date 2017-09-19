@@ -473,16 +473,17 @@ app.main = function(){
           
         
         var events = new Evenement(name, date1, date2, type);
-        
+        events.display();
         app.addEvent(events); 
-        app.saveEvent(); 
-        app.displayEvent();
             
     });
 
     window.onload = function(){
         app.displayPokedex();
         app.displayEvent();
+    }
+    window.onbeforeunload = function(){
+        app.saveEvent();
     }
 
 }

@@ -10,8 +10,6 @@ class App{
         this.$titre = $("#form .titre");
         this.$debut = $("#form .debut");
         this.$fin = $("#form .fin");
-
-        this.pos = [];
         
         this.pokedex = [];
         this.markers = [];
@@ -110,27 +108,15 @@ class App{
                 
         for (var key in arrayEv) {
             var eventStorage = arrayEv[key];
-            if( key == 0){
-                //skip
-            }
-            else {
-                var ev = new Evenement( 
-                    eventStorage.name,
-                    eventStorage.dateFirst,
-                    eventStorage.dateEnd,
-                    eventStorage.type
-                ) 
+            var ev = new Evenement( 
+                eventStorage.name,
+                new Date(eventStorage.dateFirst),
+                new Date(eventStorage.dateEnd),
+                eventStorage.type
+            ) 
+            ev.display();
+            this.evenement.push(ev);
 
-                this.evenement.push(ev);
-
-            }
-            $('#event').append(
-
-                "<div><center><ul><li>" +
-                "<p>" + eventStorage.name + " : " + eventStorage.dateFirst + " au " + eventStorage.dateEnd + " avec des pokemons de type : " + eventStorage.type + "</p>" +
-                "</li><ul></center></div>"
-
-            );
         } 
     }
 
@@ -202,11 +188,10 @@ class App{
             window.location.reload();
         }
         if(this.pokedex == 0){
-            alert("Vous n'avez plus de pokemons en vie, vous finissez seul et triste...")
+            alert("Vous perdez votre dernier combat et n'avez plus de pokemons en vie, vous finissez seul et triste...")
             window.location.reload();
         }
-        
-        
+            
     }
    
 }
