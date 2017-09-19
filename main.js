@@ -5,10 +5,12 @@ app.main = function(){
     //app.centerOnGeolocation();
     app.initPickers();
 
-    alert("Bonjour Red !");
-    alert("Le but de l'aventure est de completer ton pokedex !");
-    alert("Mais attention, si tu ne te ravitaille pas au centre Pokemon tu meurs, si tu n'as plus de pokemons en vie tu meurs, si tu n'as plus de pokédollars tu meurs aussi !");
-    alert("En avant !");
+
+    // à commenter si besoin
+    // alert("Bonjour Red !");
+    // alert("Le but de l'aventure est de completer ton pokedex !");
+    // alert("Mais attention, si tu ne te ravitaille pas au centre Pokemon tu meurs, si tu n'as plus de pokemons en vie tu meurs, si tu n'as plus de pokédollars tu meurs aussi !");
+    // alert("En avant !");
     
 
     app.markers = [];
@@ -432,6 +434,7 @@ app.main = function(){
         app.savePokedex();  
         if(app.pokedex.length == 11){
             alert('Vous avez capturé tout les pokemons !');
+            window.location.reload();
         }
         
     });
@@ -441,6 +444,10 @@ app.main = function(){
         alert('Salameche capturé !');
         app.pokedex.push(sala);
         app.savePokedex();
+        if(app.pokedex.length == 11){
+            alert('Vous avez capturé tout les pokemons !');
+            window.location.reload();
+        }
          
     });
 
@@ -449,6 +456,10 @@ app.main = function(){
         alert('Carapuce capturé !');
         app.pokedex.push(cara);
         app.savePokedex();
+        if(app.pokedex.length == 11){
+            alert('Vous avez capturé tout les pokemons !');
+            window.location.reload();
+        }
     });
 
     google.maps.event.addListener(papi.marker, 'click', function(evt) {
@@ -456,6 +467,10 @@ app.main = function(){
         alert('Papillusion capturé !');
         app.pokedex.push(papi);
         app.savePokedex();
+        if(app.pokedex.length == 11){
+            alert('Vous avez capturé tout les pokemons !');
+            window.location.reload();
+        }
         
     });
     
@@ -464,6 +479,10 @@ app.main = function(){
         alert('Dardargnan capturé !');
         app.pokedex.push(dard);
         app.savePokedex();
+        if(app.pokedex.length == 11){
+            alert('Vous avez capturé tout les pokemons !');
+            window.location.reload();
+        }
     });
 
     google.maps.event.addListener(rouca.marker, 'click', function(evt) {
@@ -471,6 +490,10 @@ app.main = function(){
         alert('Roucarnage capturé !');
         app.pokedex.push(rouca);
         app.savePokedex();
+        if(app.pokedex.length == 11){
+            alert('Vous avez capturé tout les pokemons !');
+            window.location.reload();
+        }
     });
 
     google.maps.event.addListener(sabl.marker, 'click', function(evt) {
@@ -478,6 +501,10 @@ app.main = function(){
         alert('Sablaireau capturé !');
         app.pokedex.push(sabl);
         app.savePokedex();
+        if(app.pokedex.length == 11){
+            alert('Vous avez capturé tout les pokemons !');
+            window.location.reload();
+        }
     });
 
     google.maps.event.addListener(nido.marker, 'click', function(evt) {
@@ -485,6 +512,10 @@ app.main = function(){
         alert('Nidoking capturé !');
         app.pokedex.push(nido);
         app.savePokedex();
+        if(app.pokedex.length == 11){
+            alert('Vous avez capturé tout les pokemons !');
+            window.location.reload();
+        }
     });
 
     google.maps.event.addListener(feun.marker, 'click', function(evt) {
@@ -492,6 +523,10 @@ app.main = function(){
         alert('Feunard capturé !');
         app.pokedex.push(feun);
         app.savePokedex();
+        if(app.pokedex.length == 11){
+            alert('Vous avez capturé tout les pokemons !');
+            window.location.reload();
+        }
     });
 
     google.maps.event.addListener(arca.marker, 'click', function(evt) {
@@ -499,6 +534,10 @@ app.main = function(){
         alert('Arcanin capturé !');
         app.pokedex.push(arca);
         app.savePokedex();
+        if(app.pokedex.length == 11){
+            alert('Vous avez capturé tout les pokemons !');
+            window.location.reload();
+        }
     });
 
 
