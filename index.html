@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="jquery-ui/jquery-ui.min.css">
+    <title>Pokemon Go</title>
+</head>
+<body>
+    
+    <div id="carte"></div>
+
+    
+
+    <div id="info">
+
+        <div id="battle">
+
+            <div id="équipe">
+                <center><h4>POKEDEX</h4></center>
+            </div>
+            <div id="combat">
+                <div id='argent'>
+                    <center>PokéDollars : 200</center>
+                </div>
+                <div id='fight'><center><h4>COMBAT</h4></center></div>
+                
+            </div>
+
+        </div>
+
+        <form id="form">
+
+            <center><label for="titre"><span>Evenement : </span><input class="titre" type="text"></label>
+
+            <label for="debut"><span>Date début : </span><input class="debut" type="text"></label>
+            <label for="fin"><span></span>Date fin : </span><input class="fin"type="text"></label>
+
+            <label for="feu"><span></span>Feu</span><input name="check" id="feu" type="checkbox" value="Feu"/></label>
+            <label for="eau"><span></span>Eau</span><input name="check" id="eau" type="checkbox" value="Eau"/></label>
+            <label for="plante"><span></span>Plante</span><input name="check" id="plante" type="checkbox" value="Plante"/></label>
+            <label for="elec"><span></span>Electrique</span><input name="check" id="elec" type="checkbox" value="Electrique"/></label>
+            <label for="vol"><span></span>Vol</span><input name="check" id="vol" type="checkbox" value="Vol"/></label>
+            <label for="insecte"><span></span>Insecte</span><input name="check" id="insecte" type="checkbox" value="Insecte"/></label>
+            <label for="sol"><span></span>Sol</span><input name="check" id="sol" type="checkbox" value="Sol"/></label><br></center>
+
+            <center><input type="submit" value="Valider"/></center>
+            
+        </form>
+
+        <div id='event'>
+            <center><h4>Calendrier des évènements</h4></center>
+        </div>
+
+        
+
+
+    </div>
+
+
+
+    <script src="jquery-3.2.1.min.js"></script>
+    <script src="jquery-ui/jquery-ui.min.js"></script>
+    <script src="App.js"></script>
+    <script src="Pokemon.js"></script>
+    <script src="PokeDresseur.js"></script>
+    <script src="Evenement.js"></script>
+    <script src="main.js"></script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCfE7YKACYbPJ-r-6qXy_T45thlw6OUzKo&libraries=geometry&callback=app.initMap">
+  </script>
+    
+</body>
+</html>

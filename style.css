@@ -1,0 +1,63 @@
+html, body{
+    height: 100%;
+}
+body{
+    display : flex;
+    margin: 0;
+}
+label{
+    display: block;
+    display: flex;
+    justify-content: space-between;
+    width: 220px;
+    margin: 10px;
+}
+h4{
+    margin-top: 2px;
+    margin-bottom: 5px;
+}
+#carte{
+    width: 75%;
+}
+#info{
+    width: 25%;
+}
+#battle{
+    border: 2px solid black;
+    width: 400px;
+    height: 300px;
+    margin: 5px;
+    display: flex;
+    background-color: #F3BD94;
+}
+#équipe{
+    border: 1px solid black;
+    width: 100px;
+    height: 286px;
+    margin: 1px;
+    overflow: auto;
+    padding: 5px;
+}
+#combat{
+    border: 1px solid black;
+    width: 300px;
+    height: 294px;
+    margin: 1px;
+    padding: 1px;
+    overflow: auto;
+}
+#argent{
+    border: 1px solid black;
+    width: 279px;
+    height: 40px;
+    margin: 1px;
+    padding-top: 15px;  
+}
+#event{
+    border: 2px solid black;
+    width: 400px;
+    height: 180px;
+    margin: 5px;
+    overflow: auto;
+    background-color: #F3BD94;
+}
