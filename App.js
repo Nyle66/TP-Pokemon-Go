@@ -20,8 +20,10 @@ class App{
         this.pokeN = [];
         this.pokeTop = [];
         this.evenement = [];
+        this.center = [];
 
         this.dollars = 200; 
+        this.sante = 100;
 
     }
     

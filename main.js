@@ -5,10 +5,10 @@ app.main = function(){
     //app.centerOnGeolocation();
     app.initPickers();
 
-    // alert("Bonjour Red !");
-    // alert("Le but de l'aventure est de completer ton pokedex !");
-    // alert("Mais attention, si tu n'as plus de pokemen vie ou que tu n'as plus de PokéDollars c'est le Game Over !");
-    // alert("En avant !");
+    alert("Bonjour Red !");
+    alert("Le but de l'aventure est de completer ton pokedex !");
+    alert("Mais attention, si tu ne te ravitaille pas au centre Pokemon tu meurs, si tu n'as plus de pokemons en vie tu meurs, si tu n'as plus de pokédollars tu meurs aussi !");
+    alert("En avant !");
     
 
     app.markers = [];
@@ -20,6 +20,7 @@ app.main = function(){
     app.pokeN = [];
     app.pokeTop = [];
     app.evenement = [];
+    app.centers = [];
 
 
 
@@ -46,12 +47,31 @@ app.main = function(){
     // CREATION DES POKEMONS ET DES ADVERSAIRES
 
 
-        // Dresseurs 
+         
 
     var southWest = new google.maps.LatLng(51.0899507, 5.969077);
     var northEast = new google.maps.LatLng(42.6036043,-5.5949009);
     var lngSpan = northEast.lng() - southWest.lng();
     var latSpan = northEast.lat() - southWest.lat();
+
+    for(var i = 0; i < 10; i++){
+        var iconC = 'image/center.png';
+        var positionC = new google.maps.LatLng(southWest.lat() + latSpan * Math.random(),
+        southWest.lng() + lngSpan * Math.random());
+        
+        var center = new google.maps.Marker({
+            position: positionC,
+            map: app.map,
+            title:"PokeCenter",
+            icon: iconC,
+            optimized: false,
+            visible: false,
+            zIndex: 0
+        });
+        app.centers.push(center);
+    }
+
+        // Dresseurs
 
     var iconR = 'image/jj.png';
     var positionR = new google.maps.LatLng(48.866667, 2.333333);
@@ -295,8 +315,36 @@ app.main = function(){
         // Dresseurs
 
         google.maps.event.addListener(trainer, 'dragend', function(evt) {
+
+
+        // app.sante -= 10;
+        $("#life").html("<center> Life : " + (app.sante -= 10) + "HP</center>");
+        var messages = [
+            'Vous tombez dans les pommes apres avoir fait 5 nuit blanches',
+            'Vous vous faites percuter par un dracolosse et tombez dans le coma', 
+            'Votre gourde est vide, vous finissez déséché sur le rebord d \'un sentier', 
+            'Vous n \'avez plus rien a manger et tomber dans un ravin apres avoir suivi le mirage d \'un MacDo'];
+
+        var random = Math.round(Math.random()*messages.length);
+        if(app.sante == 0){
+            alert(messages[random]);
+            window.location.reload();
+        }
+
         
         var positionT = new google.maps.LatLng(this.getPosition().lat(), this.getPosition().lng());
+
+        for(var center of app.centers) {
+            var distanceC = google.maps.geometry.spherical.computeDistanceBetween( positionT, center.position);       
+            if( distanceC < 60000){
+                
+                center.setVisible(true);
+                alert('Vous tombez sur un Centre Pokemon.');
+                app.sante += 10;   
+    
+            }
+        }
+
 
         for( var mark of app.markers){
             var distance = google.maps.geometry.spherical.computeDistanceBetween( positionT, mark.position);       
