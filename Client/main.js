@@ -23,11 +23,7 @@ app.main = function(){
     app.pokeTop = [];
     app.evenement = [];
     app.centers = [];
-
-
-
-    
-    
+  
 
     // CREATION DU DRESSEUR
 
@@ -431,7 +427,8 @@ app.main = function(){
         bulbi.marker.setIcon("image/Pokeball.png");
         alert('Bulbizare capturé !');
         app.pokedex.push(bulbi);
-        app.savePokedex();  
+        var id_pokemon = 1;
+        app.savePokedex(id_pokemon);  
         if(app.pokedex.length == 11){
             alert('Vous avez capturé tout les pokemons !');
             window.location.reload();
@@ -443,7 +440,8 @@ app.main = function(){
         sala.marker.setIcon("image/Pokeball.png");
         alert('Salameche capturé !');
         app.pokedex.push(sala);
-        app.savePokedex();
+        var id_pokemon = 9;
+        app.savePokedex(id_pokemon);
         if(app.pokedex.length == 11){
             alert('Vous avez capturé tout les pokemons !');
             window.location.reload();
@@ -455,7 +453,8 @@ app.main = function(){
         cara.marker.setIcon("image/Pokeball.png");
         alert('Carapuce capturé !');
         app.pokedex.push(cara);
-        app.savePokedex();
+        var id_pokemon = 8;
+        app.savePokedex(id_pokemon);
         if(app.pokedex.length == 11){
             alert('Vous avez capturé tout les pokemons !');
             window.location.reload();
@@ -466,7 +465,8 @@ app.main = function(){
         papi.marker.setIcon("image/Pokeball.png");
         alert('Papillusion capturé !');
         app.pokedex.push(papi);
-        app.savePokedex();
+        var id_pokemon = 10;
+        app.savePokedex(id_pokemon);
         if(app.pokedex.length == 11){
             alert('Vous avez capturé tout les pokemons !');
             window.location.reload();
@@ -478,7 +478,8 @@ app.main = function(){
         dard.marker.setIcon("image/Pokeball.png");
         alert('Dardargnan capturé !');
         app.pokedex.push(dard);
-        app.savePokedex();
+        var id_pokemon = 2;
+        app.savePokedex(id_pokemon);
         if(app.pokedex.length == 11){
             alert('Vous avez capturé tout les pokemons !');
             window.location.reload();
@@ -489,7 +490,8 @@ app.main = function(){
         rouca.marker.setIcon("image/Pokeball.png");
         alert('Roucarnage capturé !');
         app.pokedex.push(rouca);
-        app.savePokedex();
+        var id_pokemon = 7;
+        app.savePokedex(id_pokemon);
         if(app.pokedex.length == 11){
             alert('Vous avez capturé tout les pokemons !');
             window.location.reload();
@@ -500,7 +502,8 @@ app.main = function(){
         sabl.marker.setIcon("image/Pokeball.png");
         alert('Sablaireau capturé !');
         app.pokedex.push(sabl);
-        app.savePokedex();
+        var id_pokemon = 5;
+        app.savePokedex(id_pokemon);
         if(app.pokedex.length == 11){
             alert('Vous avez capturé tout les pokemons !');
             window.location.reload();
@@ -512,6 +515,7 @@ app.main = function(){
         alert('Nidoking capturé !');
         app.pokedex.push(nido);
         app.savePokedex();
+        var id_pokemon = 4;
         if(app.pokedex.length == 11){
             alert('Vous avez capturé tout les pokemons !');
             window.location.reload();
@@ -522,7 +526,8 @@ app.main = function(){
         feun.marker.setIcon("image/Pokeball.png");
         alert('Feunard capturé !');
         app.pokedex.push(feun);
-        app.savePokedex();
+        var id_pokemon = 3;
+        app.savePokedex(id_pokemon);
         if(app.pokedex.length == 11){
             alert('Vous avez capturé tout les pokemons !');
             window.location.reload();
@@ -533,7 +538,8 @@ app.main = function(){
         arca.marker.setIcon("image/Pokeball.png");
         alert('Arcanin capturé !');
         app.pokedex.push(arca);
-        app.savePokedex();
+        var id_pokemon = 6;
+        app.savePokedex(id_pokemon);
         if(app.pokedex.length == 11){
             alert('Vous avez capturé tout les pokemons !');
             window.location.reload();
@@ -572,5 +578,8 @@ app.main = function(){
     window.onbeforeunload = function(){
         app.saveEvent();
     }
+
+
+
 
 }

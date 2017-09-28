@@ -126,46 +126,47 @@ class App{
 
     // SAVE AND DISPLAY POKEDEX
 
-    savePokedex(){
-        for(var poke of this.pokedex){
-            poke.stringifiable();
-        }
-        var stringPoke = JSON.stringify(this.pokedex);
-        localStorage.setItem("Pokedex", stringPoke);
+    savePokedex(id_pokemon){
+        
+      
+        var id_user = 1;
+        var id_poke = id_pokemon;
+
+        $.ajax({
+            url : "http://localhost:8888/JS_objet/PokeGo-test/pokedex/",
+            method : "POST",
+            dataType : "json",
+            data : {
+                id_user : id_user,
+                id_poke : id_poke
+            },
+            success : function(data){
+                console.log(data);  
+            },
+            error : function(error){
+                console.log(error);
+            }    
+        });
     
     }
 
     displayPokedex(){
 
-        var dexString = localStorage.getItem("Pokedex");
-        var arrayDex = JSON.parse(dexString); 
-        
-        for (var key in arrayDex) {
-            var pokemonStorage = arrayDex[key];
-            if( key == 0){
-                //skip
-            }
-            else {
-                var pokemon = new Pokemon( 
-                    pokemonStorage.icon,
-                    pokemonStorage.title,
-                    pokemonStorage.position,
-                    pokemonStorage.type,
-                    pokemonStorage.health,
-                    pokemonStorage.force
-
-                )
-                var pika = new PokeDresseur(
-                    
-                    pokemonStorage.title,
-                    pokemonStorage.health,
-                    pokemonStorage.force,
-                    pokemonStorage.icon,
-                )
-                this.pokedex.push(pokemon);  
-            }
-            $('#équipe').append(pokemonStorage.title +  "<img src='" + pokemonStorage.icon +"'/> <br>");
-        } 
+        var id = 1;
+        $.ajax({
+            url : "http://localhost:8888/JS_objet/PokeGo-test/pokedex/"+id,
+            method : "GET",
+            dataType : "json",
+            success : function(datas){
+                console.log(datas);
+                for(var data of datas){
+                    $('#équipe').append(data.pokemonTitle +  "<img src='" + data.pokemonIcon +"'/> <br>");
+                }
+            },
+            error : function(error){
+                console.log(error);
+            }    
+        });
     }
 
     // COMBATS
@@ -197,6 +198,3 @@ class App{
     }
    
 }
-    
-            
-
