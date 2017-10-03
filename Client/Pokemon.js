@@ -25,7 +25,7 @@ class Pokemon{
             title: title,
             icon: icon,
             animation: google.maps.Animation.DROP,
-            visible: false,
+            visible: true,
             optimized: false,
             zIndex: 10
         });

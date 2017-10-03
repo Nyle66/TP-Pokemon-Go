@@ -1,5 +1,6 @@
 html, body{
     height: 100%;
+    background-color: #C0DFDB;
 }
 body{
     display : flex;
@@ -16,11 +17,17 @@ h4{
     margin-top: 2px;
     margin-bottom: 5px;
 }
+#login{
+    width: 10%;
+    margin: 10px;
+}
 #carte{
-    width: 75%;
+    width: 60%;
+    border: 2px dotted black;
 }
 #info{
-    width: 25%;
+    width: 20%;
+    margin: 5px;
 }
 #battle{
     border: 2px solid black;
@@ -68,4 +75,7 @@ h4{
     margin: 5px;
     overflow: auto;
     background-color: #F3BD94;
+}
+#errors{
+    color: red;
 }

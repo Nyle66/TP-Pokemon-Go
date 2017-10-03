@@ -1,3 +1,7 @@
+<?php
+    session_start();    
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +13,14 @@
     <title>Pokemon Go</title>
 </head>
 <body>
-    
+    <div id="login">
+        <form id="connection" method="POST">
+            <label for="username">Username :</label><input type="text" name="username" id="username"><br>
+            <label for="password">Password :</label></label><input type="password" id="password" name="password"><br><br>
+            <input type="submit" value="Se connecter" id="submit">
+            <div id="errors"></div>
+        </form>
+    </div>
     <div id="carte"></div>
 
     
@@ -67,6 +78,7 @@
     <script src="jquery-3.2.1.min.js"></script>
     <script src="jquery-ui/jquery-ui.min.js"></script>
     <script src="App.js"></script>
+    <script src="User.js"></script>
     <script src="Pokemon.js"></script>
     <script src="PokeDresseur.js"></script>
     <script src="Evenement.js"></script>

@@ -10,6 +10,9 @@ class App{
         this.$titre = $("#form .titre");
         this.$debut = $("#form .debut");
         this.$fin = $("#form .fin");
+
+        this.$name = $("#username");
+        this.$pass = $("#password");
         
         this.pokedex = [];
         this.markers = [];
@@ -21,9 +24,12 @@ class App{
         this.pokeTop = [];
         this.evenement = [];
         this.center = [];
+        this.users = [];
 
         this.dollars = 200; 
         this.sante = 100;
+        this.id = null;
+
 
     }
     
@@ -38,6 +44,7 @@ class App{
             zoom: 6,
           });
           this.main();
+          this.autoLog();
 
           var carre = new google.maps.Rectangle({
             strokeColor: '#FF0000',
@@ -51,6 +58,22 @@ class App{
             }
             });
     
+    }
+
+    autoLog(){
+
+        var element = JSON.parse(localStorage.getItem( "users" ) );
+        var user = element[0].username;
+        var pass = element[0].password;
+
+        if( element == null ){
+            alert("vous n'etes pas loggé");
+        }
+        else{
+            this.login(user, pass);
+            
+        }
+
     }
 
     centerOnGeolocation(){
@@ -129,7 +152,7 @@ class App{
     savePokedex(id_pokemon){
         
       
-        var id_user = 1;
+        var id_user = this.id;
         var id_poke = id_pokemon;
 
         $.ajax({
@@ -141,7 +164,7 @@ class App{
                 id_poke : id_poke
             },
             success : function(data){
-                console.log(data);  
+                console.log(data); 
             },
             error : function(error){
                 console.log(error);
@@ -152,7 +175,7 @@ class App{
 
     displayPokedex(){
 
-        var id = 1;
+        var id = this.id;
         $.ajax({
             url : "http://localhost:8888/JS_objet/PokeGo-test/pokedex/"+id,
             method : "GET",
@@ -195,6 +218,47 @@ class App{
             window.location.reload();
         }
             
+    }
+
+    // USERS
+
+    login(username, password){
+        
+        var that = this;
+        $.ajax({
+    
+            url: "http://localhost:8888/JS_objet/PokeGo-test/login",
+            method: "POST",
+            data : {
+                username : username,
+                password : password
+            },
+            dataType: "json",
+            success: function( data ){
+                console.log(data);
+                that.id = data.user.id;
+                if( data.success == false ){
+                    $("#errors").html( data.errors );
+                }
+                else {
+                    alert( "Welcome " + data.user.username );
+                }
+            },
+            error : function( error ){
+                console.log(error);
+            }
+    
+        });
+    }
+
+    addUser(user){
+        this.users = [];
+        this.users.push(user);
+    }
+
+    saveUser(){
+        var usersString = JSON.stringify(this.users);
+        localStorage.setItem("users", usersString);
     }
    
 }

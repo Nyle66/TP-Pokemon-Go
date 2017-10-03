@@ -11,7 +11,7 @@ app.main = function(){
     // alert("Le but de l'aventure est de completer ton pokedex !");
     // alert("Mais attention, si tu ne te ravitaille pas au centre Pokemon tu meurs, si tu n'as plus de pokemons en vie tu meurs, si tu n'as plus de pokédollars tu meurs aussi !");
     // alert("En avant !");
-    
+
 
     app.markers = [];
     app.pokedex = [];
@@ -514,8 +514,8 @@ app.main = function(){
         nido.marker.setIcon("image/Pokeball.png");
         alert('Nidoking capturé !');
         app.pokedex.push(nido);
-        app.savePokedex();
         var id_pokemon = 4;
+        app.savePokedex(id_pokemon);
         if(app.pokedex.length == 11){
             alert('Vous avez capturé tout les pokemons !');
             window.location.reload();
@@ -572,6 +572,9 @@ app.main = function(){
     });
 
     window.onload = function(){
+
+
+
         app.displayPokedex();
         app.displayEvent();
     }
@@ -580,6 +583,22 @@ app.main = function(){
     }
 
 
+// SCRIPT DU LOGIN
 
+$("#connection").submit(function( event ){
+
+    event.preventDefault();
+    var username = $("#username").val();
+    var password = $("#password").val();
+
+    app.login(username, password);
+
+    var name = app.$name.val();
+    var pass = app.$pass.val();
+    var users = new User(name, pass)
+
+    app.addUser(users);
+    app.saveUser();
+});
 
 }

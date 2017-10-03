@@ -1,14 +1,15 @@
 <?php
+
 header("Access-Control-Allow-Origin:*", false);
 require 'flight/Flight.php';
 require 'API/class/Connection.php';
 
-Flight::route("GET /pokedex/@id_user", function($id_user){
+Flight::route("GET /pokedex/@id_user", function(){
 
 
 
     $pdo = Connection::getConnection();
-     $query = "SELECT pokemon.* FROM pokemon JOIN pokedex ON pokedex.id_poke=pokemon.id WHERE pokedex.id_user=1 ";
+     $query = "SELECT pokemon.* FROM pokemon JOIN pokedex ON pokedex.id_poke=pokemon.id WHERE pokedex.id_user= ";
      $prep = $pdo->prepare($query);
      $prep->execute([
           
@@ -39,5 +40,42 @@ Flight::route("POST /pokedex", function(){
     echo json_encode($result);
     
 });
+
+Flight::route("POST /login", function(){
+    $username = Flight::request()->data["username"];
+    $password = Flight::request()->data["password"]; 
+    $pdo = new PDO( 
+        "mysql:host=localhost;dbname=pokemon",
+        "root",
+        "root"
+    );
+    $query = "SELECT * FROM user WHERE username=:username";
+    $prep = $pdo->prepare( $query );
+    $prep->execute([
+        "username" => $username
+    ]);
+    $result = $prep->fetch( PDO::FETCH_ASSOC );
+    
+    $status = [
+        "success" => false,
+        "errors" => [],
+        "user" => []
+    ];
+    if( $result == false ){
+        $status["success"] = false;
+        $status["errors"] = "Utilisateur non trouvé";
+    }
+    else if( $password != $result["password"]){
+        $status["success"] = false;
+        $status["errors"] = "Mot de passe incorrect";
+    }
+    else {
+        $status["success"] = true;
+        $status["user"] = $result;
+    
+    }
+    echo json_encode( $status );
+});
+
 
 Flight::start();
