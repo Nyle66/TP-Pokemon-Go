@@ -572,9 +572,6 @@ app.main = function(){
     });
 
     window.onload = function(){
-
-
-
         app.displayPokedex();
         app.displayEvent();
     }
@@ -585,9 +582,8 @@ app.main = function(){
 
 // SCRIPT DU LOGIN
 
-    $("#connection").submit(function( event ){
+    $("#connection").submit(function(){
 
-        event.preventDefault();
         var username = $("#username").val();
         var password = $("#password").val();
 
@@ -599,6 +595,10 @@ app.main = function(){
 
         app.addUser(users);
         app.saveUser();
+
+        window.location.reload(true);
+
+        
     });
 
 }

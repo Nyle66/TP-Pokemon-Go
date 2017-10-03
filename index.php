@@ -4,15 +4,15 @@ header("Access-Control-Allow-Origin:*", false);
 require 'flight/Flight.php';
 require 'API/class/Connection.php';
 
-Flight::route("GET /pokedex/@id_user", function(){
+Flight::route("GET /pokedex/@id_user", function($id_user){
 
 
 
     $pdo = Connection::getConnection();
-     $query = "SELECT pokemon.* FROM pokemon JOIN pokedex ON pokedex.id_poke=pokemon.id WHERE pokedex.id_user= ";
+     $query = "SELECT pokemon.* FROM pokemon JOIN pokedex ON pokedex.id_poke=pokemon.id WHERE pokedex.id_user=:id_user ";
      $prep = $pdo->prepare($query);
      $prep->execute([
-          
+          "id_user" => $id_user
      ]);
      $result = $prep->fetchAll(PDO::FETCH_ASSOC);
 

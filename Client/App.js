@@ -241,7 +241,7 @@ class App{
                     $("#errors").html( data.errors );
                 }
                 else {
-                    alert( "Welcome " + data.user.username );
+                    $("#valid").html( "Welcome " + data.user.username );
                 }
             },
             error : function( error ){

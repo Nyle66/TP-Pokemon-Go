@@ -79,6 +79,9 @@ h4{
 #errors{
     color: red;
 }
+#valid{
+    color: green;
+}
 #connection{
     margin-bottom: 50px;
 }
