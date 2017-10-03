@@ -585,22 +585,20 @@ app.main = function(){
 
 // SCRIPT DU LOGIN
 
-$("#connection").submit(function( event ){
+    $("#connection").submit(function( event ){
 
-    event.preventDefault();
-    var username = $("#username").val();
-    var password = $("#password").val();
+        event.preventDefault();
+        var username = $("#username").val();
+        var password = $("#password").val();
 
-    app.login(username, password);
+        app.login(username, password);
 
-    var name = app.$name.val();
-    var pass = app.$pass.val();
-    var users = new User(name, pass)
+        var name = app.$name.val();
+        var pass = app.$pass.val();
+        var users = new User(name, pass)
 
-    app.addUser(users);
-    app.saveUser();
-});
-
-
+        app.addUser(users);
+        app.saveUser();
+    });
 
 }
