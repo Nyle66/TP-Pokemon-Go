@@ -79,3 +79,11 @@ h4{
 #errors{
     color: red;
 }
+#connection{
+    margin-bottom: 50px;
+}
+#user{
+    width : 170px;
+    height: 200px;
+    list-style: none;
+}
